@@ -13,13 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
     @GetMapping("/greeting")
-    public ResponseEntity<String> sayHello(){
-        return ResponseEntity.ok("Hello from our API");
-    }
-
-    @GetMapping("/say-good-bye")
-    public ResponseEntity<String> sayGoodBye(){
-        return ResponseEntity.ok("Good Bye From our API");
+    public ResponseEntity<String> sayHello(@AuthenticationPrincipal OAuth2User principal){
+        return ResponseEntity.ok("Hello from Private API, you are logged in as : " + principal.getAttribute("name"));
     }
 
     @GetMapping("/user")
