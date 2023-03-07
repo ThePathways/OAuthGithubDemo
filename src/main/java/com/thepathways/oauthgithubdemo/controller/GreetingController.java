@@ -2,6 +2,8 @@ package com.thepathways.oauthgithubdemo.controller;
 
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +20,11 @@ public class GreetingController {
     @GetMapping("/say-good-bye")
     public ResponseEntity<String> sayGoodBye(){
         return ResponseEntity.ok("Good Bye From our API");
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<String> home(@AuthenticationPrincipal OAuth2User principal) {
+        return ResponseEntity.ok("Hello " +  principal.getAttribute("name"));
     }
 
 }
