@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/public/")
+@RequestMapping(value = "/api/v1/public/")
 public class PublicController {
 
     @GetMapping("/greeting")
     public ResponseEntity<String> sayHello(){
-        return ResponseEntity.ok("Hello you haven't login yet");
+        return ResponseEntity.ok("Hello I am a Public API");
     }
 
 
